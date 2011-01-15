@@ -1,4 +1,4 @@
-# `javascript_auto_include`: Automatically include controller/action-specific javascript files
+# Automatically include controller/action-specific javascript files
 
 `javascript_auto_include` provides basic helper methods for automatically including javascript files into your Rails 3 templates, based on a controller/action pattern. I found this to be a convenient way of avoiding countless content_fors in your views when trying to keep your javascripts unobtrusive.
 
@@ -6,11 +6,11 @@
 
 Should be as easy as:
 
-  $ gem install `javascript_auto_include`
+  $ gem install javascript_auto_include
   
 Or in your Gemfile:
 
-  $ gem '`javascript_auto_include`', '~> 0.1.0'
+  $ gem 'javascript_auto_include', '~> 0.1.0'
 
 ## Usage
 

@@ -22,13 +22,3 @@ Jeweler::Tasks.new do |gem|
   gem.add_runtime_dependency 'actionpack', '>= 3.0.0'
 end
 Jeweler::RubygemsDotOrgTasks.new
-
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
-
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "javascript_auto_include #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end

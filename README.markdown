@@ -6,37 +6,69 @@
 
 Should be as easy as:
 
-  $ gem install javascript_auto_include
+    $ gem install javascript_auto_include
   
 Or in your Gemfile:
 
-  $ gem 'javascript_auto_include', '~> 0.1.0'
+    $ gem 'javascript_auto_include' 
 
 ## Usage
 
-Put in your layout's head just like you would with javascript_include_tag
+### javascript_auto_include_tag
 
-### Basic
+#### Basic
 
-  <%= javascript_auto_include_tag :defaults %>
+    <%= javascript_auto_include_tag :defaults %>
   
 ... will insert the default javascripts (just like `javascript_include_tag`) and also look for an action-specifc javascript file at public/javascripts/:controller/:action.js. If it exists, it will be included as well.
 
-### With custom pattern
+#### Custom pattern
 
-  <%= javascript_auto_include_tag :defaults, :pattern => ':controller_:action.js' %>
+    <%= javascript_auto_include_tag :defaults, :pattern => ':controller_:action.js' %>
 
 ... will work just like shown above but alter the search path according to the supplied pattern: public/javascripts/:controller_:action.js (e.g. public/javascripts/album_new.js)
 
-### Compatibility
+### javascript_auto_include
 
-`javascript_auto_include_tag` uses Rails' `javascript_include_tag` helper and passes on all options (:concat, :cache, ...) and keys (:defaults, :all, ...) supplied.
+#### Basic
+
+    <%= javascript_auto_include :defaults %>
+
+... will insert the default javascripts (just like `javascript_include_tag`) and also look for an action-specifc javascript file at public/javascripts/:controller/:action.js. If it exists, it will be included as well.
+
+In addition to what +javascript_auto_include_tag+ does it will also scan the sourc files' header and include those files name there as well. For that to happen your js-file's header should look something like this:
+
+    /*
+     * [...]
+     *
+     * Depends:
+     *	 jquery.ui.core.js
+     *  jquery.ui.mouse.js
+     *  jquery.ui.widget.js
+     */
+
+For erformance reasons all dependencies identified will be stored in the config/dependencies directory of your ::Rails.root. In production environments `javascript_auto_include` will automatically pick minified versions if they exist (e.g. use jquery.ui.core.min.js instead of jquery.ui.core.js)
+
+#### Custom pattern
+
+    <%= javascript_auto_include :defaults, :pattern => ':controller_:action.js' %>
+
+... will work just like shown above but alter the search path according to the supplied pattern: public/javascripts/:controller_:action.js (e.g. public/javascripts/album_new.js)
+
+#### Forcing re-scan
+
+    <%= javascript_auto_include :defaults, :force => true %>
+
+... will force +javascript_auto_include+ to parse the javascript headers again even if dependencies exists in config/depdencies/jquery.ui.core.yml)
+
+## Compatibility
+
+Both use Rails' `javascript_include_tag` helper and pass on all options (:concat, :cache, ...) and keys (:defaults, :all, ...) supplied.
 
 ## TODO
 
-I just extracted this from a current project. It still lacks specs and testing but so far it seems to work for me. 
+Right now it does what I want it to. But you decide. Go fork! 
 
 ## Copyright
 
-Copyright (c) 2011 Ulf Möhring <hello@ulfmoehring.net>. See LICENSE.txt for
-further details.
+Copyright (c) 2011 Ulf Möhring <hello@ulfmoehring.net>. See LICENSE.txt for further details.

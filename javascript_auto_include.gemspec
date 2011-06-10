@@ -5,59 +5,55 @@
 
 Gem::Specification.new do |s|
   s.name = %q{javascript_auto_include}
-  s.version = "0.0.0"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["paceline"]
-  s.date = %q{2011-01-15}
-  s.description = %q{TODO: longer description of your gem}
+  s.authors = [%q{Ulf Moehring}]
+  s.date = %q{2011-06-10}
+  s.description = %q{Rails helper for automatically including javascript files. Looks up assets in public/javascripts based on the current controller/action pair.}
   s.email = %q{hello@ulfmoehring.net}
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.markdown"
   ]
   s.files = [
-    ".document",
-    ".rspec",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.markdown",
     "Rakefile",
     "VERSION",
     "lib/javascript_auto_include.rb",
-    "spec/javascript_auto_include_spec.rb",
-    "spec/spec_helper.rb"
+    "lib/javascript_auto_include/dependency.rb",
+    "lib/javascript_auto_include/helpers/action_controller.rb",
+    "lib/javascript_auto_include/helpers/action_view.rb",
+    "lib/javascript_auto_include/source_file.rb"
   ]
   s.homepage = %q{http://github.com/paceline/javascript_auto_include}
-  s.licenses = ["MIT"]
-  s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
-  s.summary = %q{TODO: one-line summary of your gem}
-  s.test_files = [
-    "spec/javascript_auto_include_spec.rb",
-    "spec/spec_helper.rb"
-  ]
+  s.licenses = [%q{MIT}]
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.5}
+  s.summary = %q{Rails helper for automatically including javascript files}
 
   if s.respond_to? :specification_version then
-    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<actionpack>, ["~> 3.0.0"])
-      s.add_development_dependency(%q<rspec>, ["~> 2.3.0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.5.2"])
+      s.add_runtime_dependency(%q<rails>, ["~> 3.0.7"])
+      s.add_development_dependency(%q<bundler>, [">= 0"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
+      s.add_development_dependency(%q<rspec-rails>, [">= 2.6.rc"])
     else
-      s.add_dependency(%q<actionpack>, ["~> 3.0.0"])
-      s.add_dependency(%q<rspec>, ["~> 2.3.0"])
-      s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-      s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
+      s.add_dependency(%q<rails>, ["~> 3.0.7"])
+      s.add_dependency(%q<bundler>, [">= 0"])
+      s.add_dependency(%q<jeweler>, [">= 0"])
+      s.add_dependency(%q<rspec-rails>, [">= 2.6.rc"])
     end
   else
-    s.add_dependency(%q<actionpack>, ["~> 3.0.0"])
-    s.add_dependency(%q<rspec>, ["~> 2.3.0"])
-    s.add_dependency(%q<bundler>, ["~> 1.0.0"])
-    s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
+    s.add_dependency(%q<rails>, ["~> 3.0.7"])
+    s.add_dependency(%q<bundler>, [">= 0"])
+    s.add_dependency(%q<jeweler>, [">= 0"])
+    s.add_dependency(%q<rspec-rails>, [">= 2.6.rc"])
   end
 end
 

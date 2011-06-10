@@ -1,8 +1,12 @@
 source "http://rubygems.org"
 
-gem 'actionpack', '>= 3.0.0', :require => 'action_pack'
+gem 'rails', '~> 3.0.7'
 
 group :development do
-  gem "bundler", "~> 1.0.0"
-  gem "jeweler", "~> 1.5.2"
+  gem 'bundler'
+  gem 'jeweler'
+end
+
+group :test, :development do
+  gem 'rspec-rails', '>= 2.6.rc'
 end

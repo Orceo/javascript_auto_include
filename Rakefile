@@ -19,6 +19,6 @@ Jeweler::Tasks.new do |gem|
   gem.description = "Rails helper for automatically including javascript files. Looks up assets in public/javascripts based on the current controller/action pair."
   gem.email = "hello@ulfmoehring.net"
   gem.authors = ["Ulf Moehring"]
-  gem.add_runtime_dependency 'actionpack', '>= 3.0.0'
+  gem.files = FileList["[A-Z]*","{lib,spec}/**/*"]
 end
 Jeweler::RubygemsDotOrgTasks.new

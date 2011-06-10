@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{javascript_auto_include}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Ulf Moehring}]
@@ -27,7 +27,43 @@ Gem::Specification.new do |s|
     "lib/javascript_auto_include/dependency.rb",
     "lib/javascript_auto_include/helpers/action_controller.rb",
     "lib/javascript_auto_include/helpers/action_view.rb",
-    "lib/javascript_auto_include/source_file.rb"
+    "lib/javascript_auto_include/source_file.rb",
+    "spec/dependency_spec.rb",
+    "spec/javascript_auto_include_spec.rb",
+    "spec/javascript_auto_include_tag_spec.rb",
+    "spec/source_file_spec.rb",
+    "spec/spec_helper.rb",
+    "spec/testbed/Gemfile",
+    "spec/testbed/Gemfile.lock",
+    "spec/testbed/Rakefile",
+    "spec/testbed/config.ru",
+    "spec/testbed/config/application.rb",
+    "spec/testbed/config/boot.rb",
+    "spec/testbed/config/dependencies/another_fake_controller.yml",
+    "spec/testbed/config/dependencies/application.yml",
+    "spec/testbed/config/dependencies/fake_controller.yml",
+    "spec/testbed/config/dependencies/jquery.yml",
+    "spec/testbed/config/dependencies/rails.yml",
+    "spec/testbed/config/environment.rb",
+    "spec/testbed/config/environments/development.rb",
+    "spec/testbed/config/environments/production.rb",
+    "spec/testbed/config/environments/test.rb",
+    "spec/testbed/config/routes.rb",
+    "spec/testbed/log/development.log",
+    "spec/testbed/log/production.log",
+    "spec/testbed/log/server.log",
+    "spec/testbed/log/test.log",
+    "spec/testbed/public/javascripts/another_fake_controller.js",
+    "spec/testbed/public/javascripts/application.js",
+    "spec/testbed/public/javascripts/fake_controller.js",
+    "spec/testbed/public/javascripts/jquery.js",
+    "spec/testbed/public/javascripts/jquery.ui.core.js",
+    "spec/testbed/public/javascripts/jquery.ui.core.min.js",
+    "spec/testbed/public/javascripts/jquery.ui.mouse.js",
+    "spec/testbed/public/javascripts/jquery.ui.mouse.min.js",
+    "spec/testbed/public/javascripts/jquery.ui.widget.js",
+    "spec/testbed/public/javascripts/jquery.ui.widget.min.js",
+    "spec/testbed/public/javascripts/rails.js"
   ]
   s.homepage = %q{http://github.com/paceline/javascript_auto_include}
   s.licenses = [%q{MIT}]

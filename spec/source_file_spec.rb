@@ -4,9 +4,9 @@ require 'yaml'
 describe SourceFile do
   
   before(:all) do
-    @conf = "#{::Rails.root}#{File::SEPARATOR}config#{File::SEPARATOR}dependencies"
+    @conf = "#{::Rails.root}/config/dependencies"
     if Dir.exists?(@conf)
-      Dir.entries(@conf).collect { |file| File.delete("#{@conf}#{File::SEPARATOR}#{file}") unless ['.'].include?(file) }
+      Dir.entries(@conf).collect { |file| File.delete("#{@conf}/#{file}") unless ['.'].include?(file) }
       Dir.rmdir(@conf)
     end
     @test_array = ['jquery','rails','fake_controller','application']
@@ -19,7 +19,7 @@ describe SourceFile do
   end
 
   it "caches discoveries in config file" do
-    File.exists?("#{@conf}#{File::SEPARATOR}fake_controller.yml").should be_true
+    File.exists?("#{@conf}/fake_controller.yml").should be_true
   end
   
   it "reads dependencies from config file" do
@@ -39,8 +39,8 @@ describe SourceFile do
   
   it "can store multiple dependencies in one directory" do
     SourceFile.new(['jquery','rails','another_fake_controller','application']).dependencies
-    File.exists?("#{@conf}#{File::SEPARATOR}fake_controller.yml").should be_true
-    File.exists?("#{@conf}#{File::SEPARATOR}another_fake_controller.yml").should be_true
+    File.exists?("#{@conf}/fake_controller.yml").should be_true
+    File.exists?("#{@conf}/another_fake_controller.yml").should be_true
   end
   
   it "uses minimized instead of regular versions in production environments" do

@@ -34,11 +34,11 @@ module JavascriptAutoInclude
       #
       def javascript_auto_include_tag(*sources)
         options = sources.extract_options!.stringify_keys
-        pattern = options.key?("pattern") ? options.delete("pattern") : ":controller#{File::SEPARATOR}:action"
+        pattern = options.key?("pattern") ? options.delete("pattern") : ":controller/:action"
         
         auto_javascript_file = pattern.sub(":controller",$CONTROLLER).sub(":action",$ACTION) + ".js"
         
-        sources << auto_javascript_file if File.exists?(Rails.root.join('public','javascripts',auto_javascript_file))
+        sources << auto_javascript_file if File.exists?(Rails.root.join('app','assets','javascripts',auto_javascript_file))
         javascript_include_tag(*sources << options)
       end
       # = javascript_auto_include_tag
@@ -82,7 +82,7 @@ module JavascriptAutoInclude
       #
       def javascript_auto_include(*sources) #:nodoc:
         options = sources.extract_options!.stringify_keys
-        pattern = options.key?("pattern") ? options.delete("pattern") : ":controller#{File::SEPARATOR}:action"
+        pattern = options.key?("pattern") ? options.delete("pattern") : ":controller/:action"
         force = options.key?("force") ? options.delete("force") : false
         
         source = SourceFile.new(expand_javascript_sources(sources << pattern.sub(":controller",$CONTROLLER).sub(":action",$ACTION)))

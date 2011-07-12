@@ -4,9 +4,9 @@ class SourceFile
   
   # Retrieve javascript file as full path
   def initialize(files)  
-    Dir.mkdir("#{::Rails.root}#{File::SEPARATOR}config#{File::SEPARATOR}dependencies") unless Dir.exists?("#{::Rails.root}#{File::SEPARATOR}config#{File::SEPARATOR}dependencies")
-    @config_files = files.collect { |file| [file, "#{::Rails.root}#{File::SEPARATOR}config#{File::SEPARATOR}dependencies#{File::SEPARATOR}#{file}.yml"] }
-    @source_files = files.collect { |file| [file, "#{::Rails.root}#{File::SEPARATOR}public#{File::SEPARATOR}javascripts#{File::SEPARATOR}#{file}#{file.match(/\.js$/) ? '' : '.js' }"] }
+    Dir.mkdir("#{::Rails.root}/config/dependencies") unless Dir.exists?("#{::Rails.root}/config/dependencies")
+    @config_files = files.collect { |file| [file, "#{::Rails.root}/config/dependencies/#{file}.yml"] }
+    @source_files = files.collect { |file| [file, "#{::Rails.root}/public/javascripts/#{file}#{file.match(/\.js$/) ? '' : '.js' }"] }
     @dependencies = Dependency.new
   end
   
@@ -54,7 +54,7 @@ class SourceFile
     def minify(sources)
       sources.each do |source|
         minified_version = source.match(/\.js$/) ? source.gsub('.js','.min.js') : "#{source}.min.js"
-        sources[sources.index(source)] = (File.exists?("#{::Rails.root}#{File::SEPARATOR}public#{File::SEPARATOR}javascripts#{File::SEPARATOR}#{minified_version}") ? minified_version : source)
+        sources[sources.index(source)] = (File.exists?("#{::Rails.root}/public/javascripts/#{minified_version}") ? minified_version : source)
       end
       return sources
     end
